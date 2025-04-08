@@ -10,10 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "cors": "^2.8.5",
-    "dotenv": "^16.4.7",
-    "express": "^5.1.0",
-    "mongodb": "^6.15.0",
+    "babel-plugin-react-compiler": "^19.0.0-beta-e993439-20250405",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },

@@ -16,9 +16,17 @@ app.use(function (req, res, next) {
 })
 app.use(cors())
 app.use(express.json({ limit: "30mb" }))
+app.use((err, req, res, next) => {
+    if (err instanceof SyntaxError && err.status === 400 && "body" in err) {
+        res.status(400).send({ error: true, message: "Invalid JSON" })
+    } else {
+        next()
+    }
+}
+)
 
 require("./cmr.js")(app)
 
-server.listen(process.env.PORT, () => {
+app.listen(process.env.PORT, () => {
     console.log("server staretd on http://localhost:" + process.env.PORT);
 })
