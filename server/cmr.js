@@ -27,7 +27,8 @@ async function extract(body, db) {
         let expr = new RegExp(body.roll, 'i')
         Search.roll = {$regex: expr}
     }else if(body.searchby==="name"){
-        let expr = new RegExp(body.name, 'i')
+        let name = body.name.replace(" ","").split("").join('\\s*')
+        let expr = new RegExp(name, 'i')
         Search.name = {$regex: expr}
     }
     if(body.branch !== "ALL"){

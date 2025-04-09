@@ -1,12 +1,42 @@
-# React + Vite
+# 📚 CMRIT Student Directory
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-stack web application to search for students from CMRIT by name, roll number, year of joining, or branch, and view their profile photos.
 
-Currently, two official plugins are available:
+## 🛠️ Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Frontend**: React (Vite)
+- **Backend**: Node.js, Express
+- **Database**: MongoDB
+- **Hosting**: AWS
 
-## Expanding the ESLint configuration
+## 🚀 Features
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- 🔍 Search students by **name**, **roll number**, **year of joining**, or **branch**
+- 🖼 View student profile photos
+- 🔠 Case-insensitive and space-tolerant search using regex
+- ⚡ Pagination support for efficient data loading
+- 🔗 Persistent MongoDB connection to improve performance
+
+
+## 📦 Installation
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/22R01A05C9/CMRITSearch.git
+cd CMRITSearch
+npm install
+npm run dev
+cd server
+npm install
+node index.js
+```
+
+Visit http://localhost:5173 to see the frontend (or as per your Vite config).
+
+## 📌 Deployment
+You can see the live demo of this project at https://saiteja.site/cmr
+
+
+## 👨‍💻 Author
+Made with ❤️ by Saiteja
