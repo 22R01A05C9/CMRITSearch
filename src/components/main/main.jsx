@@ -1,11 +1,16 @@
 import Header from "../header/header";
+import Options from "../options";
+import "./main.css"
 
 function Main(){
 
     return (
         <div className="cmritsearch">
             <Header />
-            This IS Main Component
+            <div className="main">
+                <h3>Please fill/select the below details</h3>
+                <Options />
+            </div>
         </div>
     );
 }

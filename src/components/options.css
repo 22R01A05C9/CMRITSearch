@@ -1,0 +1,9 @@
+.options{
+    padding: 20px;
+}
+
+.year{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
