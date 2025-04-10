@@ -51,6 +51,7 @@ async function getdata(req, res, db) {
         res.status(400).json({ error: true, message: "All Fields Are Required", data: data })
         return
     }
+    data.searchby = data.searchby.toLowerCase()
     if (data.searchby !== "roll" && data.searchby !== "name") {
         res.status(400).json({ error: true, message: "Invalid Search By" })
         return
