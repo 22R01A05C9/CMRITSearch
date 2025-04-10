@@ -1,0 +1,21 @@
+.options{
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.year, .searchby, .branch{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    flex-direction: column;
+}
+
+.showoptions{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}

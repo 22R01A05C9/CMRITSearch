@@ -1,5 +1,5 @@
 import Header from "../header/header";
-import Options from "../options";
+import Options from "../options/options";
 import "./main.css"
 
 function Main(){
