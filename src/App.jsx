@@ -1,9 +1,17 @@
+import Footer from "./components/footer/footer";
+import Main from "./components/main/main";
+import Loading from "./components/loading/loading";
+import "./App.css";
+import { Suspense } from "react";
+
 function App(){
 	return (
-		<div className="App">
-			<h1>Welcome to React</h1>
-			<p>This is a simple React application.</p>
-		</div>
+		<Suspense fallback={<Loading />}>
+			<div className="App">
+				<Main />
+				<Footer />
+			</div>
+		</Suspense>
 	);
 }
 
