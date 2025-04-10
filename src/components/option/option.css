@@ -17,6 +17,6 @@
 .active{
     background-color: #18abedb3;
     border: 1px solid var(--blue);
-    transform: scale(1.05);
+    transform: scale(1.02);
     box-shadow: 0px 0px 10px 2px #00b0ff45;
 }

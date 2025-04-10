@@ -1,13 +1,13 @@
 import Option from "../option/option";
 
-function Year() {
+function Year({ year, set }) {
     return (
         <div className="year">
             <p>Slect Year:</p>
             <div className="showoptions">
-                <Option option="ALL" active={true} onclick={(e) => { console.log(e); }} />
-                <Option option="2022" active={false} onclick={(e) => { console.log(e); }} />
-                <Option option="2023" active={false} onclick={(e) => { console.log(e); }} />
+                {["ALL", "2022", "2023"].map((y) => {
+                    return <Option key={y} option={y} active={year === y} onclick={() => { set(y); }} />
+                })}
             </div>
         </div >
     )

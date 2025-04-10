@@ -1,12 +1,15 @@
 import Option from "../option/option";
 
-function Searchby() {
+function Searchby({ searchby, set }) {
     return (
         <div className="searchby">
             <p>Search By: </p>
             <div className="showoptions">
-                <Option option={"Name"} active={true} onclick={(e) => { console.log(e); }} />
-                <Option option={"Roll"} active={false} onclick={(e) => { console.log(e); }} />
+                {
+                    ["Name", "Roll"].map((y) => {
+                        return <Option key={y} option={y} active={searchby === y} onclick={() => { set(y); }} />
+                    })
+                }
             </div>
         </div>
     )
