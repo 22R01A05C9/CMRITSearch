@@ -10,6 +10,14 @@ async function connectdb(db, collection) {
 
 }
 
+const branchmap = new Map([
+    ["CSE", "CSE"],
+    ["ECE", "ECE"],
+    ["CSM", "CSE(AI&ML)"],
+    ["CSD", "CSE(DS)"],
+    ["CSC", "CSC"],
+    ["AIML", "AIML"]
+])
 
 async function extract(body, db) {
     let page = parseInt(body.page)
@@ -24,7 +32,8 @@ async function extract(body, db) {
 
     let Search ={}
     if(body.searchby==="roll"){
-        let expr = new RegExp(body.roll, 'i')
+        let roll = body.roll?.replace(" ","").split("").join('\\s*')
+        let expr = new RegExp(roll, 'i')
         Search.roll = {$regex: expr}
     }else if(body.searchby==="name"){
         let name = body.name?.replace(" ","").split("").join('\\s*')
@@ -32,7 +41,7 @@ async function extract(body, db) {
         Search.name = {$regex: expr}
     }
     if(body.branch !== "ALL"){
-        Search.branch = body.branch
+        Search.branch = branchmap.get(body.branch)
     }
     if(body.year !== "ALL"){
         Search.year = body.year
