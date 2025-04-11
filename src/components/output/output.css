@@ -4,7 +4,11 @@
     min-height: 200px;
     display: flex;
     justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap:10px;
 }
+
 .students{
     padding: 10px;
     width: 100%;
@@ -42,4 +46,18 @@
     text-align: center;
 }
 
+.output button{
+    padding: 10px 10px;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.output button:hover{
+    background-color: #0056b3;
+    transform: scale(1.02);
+}
 

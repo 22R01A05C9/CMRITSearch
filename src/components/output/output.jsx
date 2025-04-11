@@ -1,29 +1,29 @@
 import "./output.css"
 import Card from "./card";
 import Loading from "../loading/loading"
-import { useState, useEffect } from "react";
-function Output({ data }) {
+import { useState } from "react";
+
+function Output({ data, loadmore, showload }) {
     const [loading, setLoading] = useState(true);
-    useEffect(() => {
-        setLoading(true);
-        setTimeout(() => {
-            setLoading(false);
-        }, 500);
-    }, [data]);
+    setTimeout(() => {
+        setLoading(false);
+    }, 500);
 
     return (
         <div className="output">
             {loading ? <Loading /> :
-                <div className="students">
-                    {   data && !data.error? 
-                        data.data.map((item, index) => {
-                            return <Card key={index} data={item} />
-                        }) : 
-                        <p>No Data Found</p>
-                    }
-                </div>
+                data && data.length >= 1 ?
+                    <>
+                        <div className="students">
+                            {data.map((item, index) => {
+                                return <Card key={index} data={item} />
+                            })}
+                        </div>
+                        {showload && <button onClick={loadmore}>Load More</button>}
+                    </> :
+                    <p>No Data Found</p>
+
             }
-            {!loading }
         </div>
     )
 }
