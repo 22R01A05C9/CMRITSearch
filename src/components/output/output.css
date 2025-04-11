@@ -1,0 +1,45 @@
+.output{
+    width: 100%;
+    padding: 10px;
+    min-height: 200px;
+    display: flex;
+    justify-content: center;
+}
+.students{
+    padding: 10px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+    justify-items: center;
+}
+
+
+.card{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap:5px;
+}
+
+.card img{
+    width: 200px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.info{
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap:5px;
+    align-items: center;
+    max-width: 90%;
+}
+
+.card .info h4{
+    text-align: center;
+}
+
+

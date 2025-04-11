@@ -27,7 +27,7 @@ async function extract(body, db) {
         let expr = new RegExp(body.roll, 'i')
         Search.roll = {$regex: expr}
     }else if(body.searchby==="name"){
-        let name = body.name.replace(" ","").split("").join('\\s*')
+        let name = body.name?.replace(" ","").split("").join('\\s*')
         let expr = new RegExp(name, 'i')
         Search.name = {$regex: expr}
     }
@@ -47,17 +47,13 @@ async function getdata(req, res, db) {
         return
     }
     let data = req.body
-    if ((!data.roll && !data.name) || !data.branch || !data.year || !data.searchby || !data.page) {
+    if (!data.branch || !data.year || !data.searchby || !data.page) {
         res.status(400).json({ error: true, message: "All Fields Are Required", data: data })
         return
     }
     data.searchby = data.searchby.toLowerCase()
     if (data.searchby !== "roll" && data.searchby !== "name") {
         res.status(400).json({ error: true, message: "Invalid Search By" })
-        return
-    }
-    if ((data.searchby === "roll" && !data.roll) || (data.searchby === "name" && !data.name)) {
-        res.status(400).json({ error: true, message: "Invalid Search Parameter" })
         return
     }
     let pageexp = /^[0-9]{0,3}$/
