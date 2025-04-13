@@ -2,14 +2,10 @@ import "./output.css"
 import Card from "./card";
 import Loading from "../loading/loading"
 import Scroll from "../scroll/scroll";
-import { useState, useRef } from "react";
+import { useRef } from "react";
 
-function Output({ data, loadmore, showload }) {
+function Output({ data, loadmore, showload, loading }) {
     const buttonRef = useRef(null);
-    const [loading, setLoading] = useState(true);
-    setTimeout(() => {
-        setLoading(false);
-    }, 500);
     const done = () => {
         buttonRef.current.classList.remove("loadmore");
     }
@@ -19,19 +15,17 @@ function Output({ data, loadmore, showload }) {
         loadmore(done);
     }
 
-    const random = () => {
-        return Math.floor(Math.random() * 10000) + 100;
-    }
-
     return (
         <div className="output">
             {loading ? <Loading /> :
                 data && data.length >= 1 ?
                     <>
                         <div className="students">
-                            {data.map((item) => {
-                                return <Card key={random()} data={item} />
-                            })}
+                            {
+                                data.map((item) => {
+                                    return <Card key={item.key} data={item} />
+                                })
+                            }
                         </div>
                         {showload && <button ref={buttonRef} onClick={loadmorew}><span>Load More</span></button>}
                     </> :

@@ -6,13 +6,13 @@ import { useEffect } from "react";
 import getdata from "../../helper/getdata";
 import "./options.css"
 
-function Options({ searchby, branch, year, setdata, inputRef, setYear, setBranch, setSearchby, setShowload }) {
+function Options({ searchby, branch, year, setdata, inputRef, setYear, setBranch, setSearchby, setShowload, setLoading }) {
     useEffect(() => {
         if (year === "2023") setBranch("ALL")
     }, [year])
-const wrapper = () => {
-    getdata(inputRef.current, searchby, branch, year, 1, setdata, setShowload, false)
-}
+    const wrapper = () => {
+        getdata(inputRef.current, searchby, branch, year, 1, setdata, setShowload, false, null, setLoading)
+    }
     useEffect(() => {
         wrapper()
     }, [branch, year, searchby])

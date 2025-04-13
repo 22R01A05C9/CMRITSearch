@@ -1,5 +1,11 @@
 import { debounce } from "lodash";
-const getdata = debounce((e, searchby, branch, year, page, setdata, setShowload, append, done=null) => {
+const getdata = debounce((e, searchby, branch, year, page, setdata, setShowload, append, done=null, setLoading=null) => {
+    const random = ()=> {
+        return Math.floor(Math.random() * 10000) + 100;
+    }
+    if(setLoading){
+        setLoading(true)
+    }
     let pdata = {
         searchby: searchby,
         branch: branch,
@@ -22,15 +28,33 @@ const getdata = debounce((e, searchby, branch, year, page, setdata, setShowload,
             alert(res.message)
             return
         }
-        if(append){
-            setdata((data)=>{return (data ?  [...data,...res.data] : res.data)})
-        }else{
-            setdata(res.data)
-        }
-        setShowload(res.length === 10)
-        if(done){
-            done()
-        }
+        res.data.map((item) => {
+            item.key= random()
+            return item
+        })
+        const imagepromises = res.data.map((item) => {
+            return new Promise((resolve)=>{
+                const img = new Image()
+                img.src = `https://cmrstatic.saiteja.site/${item.roll}.jpg`
+                img.onload = img.onerror = resolve
+            })
+        })
+        Promise.all(imagepromises).then(() =>{
+            if(append){
+                setdata((data)=>{return (data ?  [...data,...res.data] : res.data)})
+            }else{
+                setdata(res.data)
+            }
+            setShowload(res.length === 10)
+            if(setLoading){
+                setLoading(false)
+            }
+            if(done){
+                done()
+            }
+            
+        })
+        
     })
 }, 500);
 

@@ -12,17 +12,17 @@ function Main() {
     const [branch, setBranch] = useState("ALL");
     const [showload, setShowload] = useState(true);
     const inputRef = useRef(null);
+    const [loading, setLoading] = useState(true);
     const loadmore = (done) => {
         getdata(inputRef.current, searchby, branch, year, Math.ceil(data?.length / 10) + 1, setData, setShowload, true, done)
     }
-
 
     return (
         <div className="cmritsearch">
             <Header />
             <div className="main">
-                <Options setdata={setData} searchby={searchby} branch={branch} year={year} inputRef={inputRef} setYear={setYear} setBranch={setBranch} setSearchby={setSearchby} setShowload={setShowload}/>
-                {data && <Output data={data} loadmore={loadmore} showload={showload}/>}
+                <Options setdata={setData} searchby={searchby} branch={branch} year={year} inputRef={inputRef} setYear={setYear} setBranch={setBranch} setSearchby={setSearchby} setShowload={setShowload} setLoading={setLoading}/>
+                {data && <Output data={data} loadmore={loadmore} showload={showload} loading={loading}/>}
             </div>
         </div>
     );
