@@ -12,8 +12,8 @@ function Main() {
     const [branch, setBranch] = useState("ALL");
     const [showload, setShowload] = useState(true);
     const inputRef = useRef(null);
-    const loadmore = () => {
-        getdata(inputRef.current, searchby, branch, year, Math.ceil(data?.length / 10) + 1, setData, setShowload, true)
+    const loadmore = (done) => {
+        getdata(inputRef.current, searchby, branch, year, Math.ceil(data?.length / 10) + 1, setData, setShowload, true, done)
     }
 
 

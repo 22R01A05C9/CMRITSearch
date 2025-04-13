@@ -1,6 +1,5 @@
 import { debounce } from "lodash";
-import { toast } from "react-toastify";
-const getdata = debounce((e, searchby, branch, year, page, setdata, setShowload, append) => {
+const getdata = debounce((e, searchby, branch, year, page, setdata, setShowload, append, done=null) => {
     let pdata = {
         searchby: searchby,
         branch: branch,
@@ -20,7 +19,7 @@ const getdata = debounce((e, searchby, branch, year, page, setdata, setShowload,
         body: JSON.stringify(pdata)
     }).then(res => res.json()).then(res => {
         if(res.error) {
-            toast.error(res.message)
+            alert(res.message)
             return
         }
         if(append){
@@ -29,6 +28,9 @@ const getdata = debounce((e, searchby, branch, year, page, setdata, setShowload,
             setdata(res.data)
         }
         setShowload(res.length === 10)
+        if(done){
+            done()
+        }
     })
 }, 500);
 
