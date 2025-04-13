@@ -57,13 +57,12 @@
     transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
-.output button:not(.loadmore):hover{
+.output button:hover, .output .loadmore{
     background-color: #0056b3;
     transform: scale(1.02);
 }
 
 .output .loadmore{
-    background-color: #0056b3;
     height: 36px;
     width: 85px;
     padding: 0;
