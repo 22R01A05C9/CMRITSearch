@@ -2,7 +2,7 @@ import "./output.css"
 import Card from "./card";
 import Loading from "../loading/loading"
 import Scroll from "../scroll/scroll";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 
 function Output({ data, loadmore, showload, loading }) {
     const buttonRef = useRef(null);
@@ -15,6 +15,18 @@ function Output({ data, loadmore, showload, loading }) {
         loadmore(done);
     }
 
+    useEffect(() => {
+        const observer = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting && showload && !loading) {
+                loadmorew();
+            }
+        }, { threshold: 1 });
+    
+        observer.observe(buttonRef.current);
+        return () => {
+            observer.disconnect();
+        }
+    }, [data,loading])
     return (
         <div className="output">
             {loading ? <Loading /> :
@@ -27,10 +39,10 @@ function Output({ data, loadmore, showload, loading }) {
                                 })
                             }
                         </div>
-                        {showload && <button ref={buttonRef} onClick={loadmorew}><span>Load More</span></button>}
                     </> :
                     <p>No Data Found</p>
             }
+            <span ref={buttonRef}></span>
             <Scroll />
         </div>
     )
