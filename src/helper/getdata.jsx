@@ -1,7 +1,7 @@
 import { debounce } from "lodash";
 const getdata = debounce((e, searchby, branch, year, page, setdata, setShowload, append, done=null, setLoading=null) => {
     const random = ()=> {
-        return Math.floor(Math.random() * 10000) + 100;
+        return Math.floor(Math.random() * 1000000) + Math.floor(Math.random() * 1000000);
     }
     if(setLoading){
         setLoading(true)
